@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectFilterShop, setShopName} from "../redux/slices/filterSlice";
+import {setShopName, setCurrentPage, selectFilterShop, setSearchValue} from "../redux/slices/filterSlice";
 
 const shops = ['All', 'Carrefour', 'Masterino', 'Dolphin']
 
@@ -8,6 +8,11 @@ const Shops = () => {
 
   const dispatch = useDispatch()
   const activeShopTitle = useSelector(selectFilterShop)
+  const changeShop = (shopName) => {
+    dispatch(setShopName(shopName))
+    dispatch(setCurrentPage(1))
+    dispatch(setSearchValue(''))
+  }
 
   return (
     <div className="shops">
@@ -16,7 +21,7 @@ const Shops = () => {
           shops.map((shopTitle) => <li
               className={shopTitle === activeShopTitle ? 'active' : ''}
               key={shopTitle}
-              onClick={() => dispatch(setShopName(shopTitle))}
+              onClick={() => changeShop(shopTitle)}
             >
               {shopTitle}
             </li>

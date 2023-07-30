@@ -42,6 +42,7 @@ const filterSlice = createSlice({
 
 export const selectFilter = (state) => state.filter
 export const selectFilterShop = (state) => state.filter.shop
+export const selectSearchValue = (state) => state.filter.searchValue
 export const {
   setShopName,
   setSort,

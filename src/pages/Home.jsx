@@ -46,7 +46,7 @@ const Home = () => {
 
   const getProducts = async () => {
 
-    const searchBy = searchValue ? `search=${searchValue}` : ''
+    const searchBy = searchValue ? `${searchValue}` : ''
     const shopBy = (shop === 'All' || !shop) ? '' : `shop=${shop}`
     const sortBy = `sortBy=${sortType}`
 
@@ -58,6 +58,18 @@ const Home = () => {
     }))
     window.scrollTo(0, 0)
   }
+
+  React.useEffect(() => {
+
+    if (!isSearch.current) {
+
+      getProducts()
+
+    }
+
+    isSearch.current = false
+
+  }, [searchValue, currentPage, shop, sortType])
 
   React.useEffect(() => {
 
@@ -78,7 +90,7 @@ const Home = () => {
           searchValue
         })
       )
-      isSearch.current = true
+      //isSearch.current = true
     }
   }, [])
 
@@ -90,23 +102,17 @@ const Home = () => {
         sortProperty: sort.sortProperty,
         shop,
         currentPage,
-        searchValue,
+        search: searchValue,
+        order: 'asc'
       })
 
       navigate(`?${queryString}`)
+      console.log(queryString)
     }
     isMounted.current = true
   }, [searchValue, currentPage, shop, sortType])
 
-  React.useEffect(() => {
 
-    //if (!isSearch.current) {
-    getProducts()
-    //}
-
-    // isSearch.current = false
-
-  }, [searchValue, currentPage, shop, sortType])
   const onChangePage = (num) => dispatch(setCurrentPage(num))
 
   const skeletons = [...new Array(9)].map((_, idx) => <ProductBlockSkeleton key={idx}/>)

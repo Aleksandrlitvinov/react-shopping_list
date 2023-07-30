@@ -2,7 +2,6 @@ import React from 'react';
 import ReactPaginate from "react-paginate";
 
 const Pagination = ({currentPage, onChangePage, countPages, className}) => {
-  console.log(className)
   return (
     <ReactPaginate
       className={`${className}`}
@@ -14,6 +13,7 @@ const Pagination = ({currentPage, onChangePage, countPages, className}) => {
       forcePage={currentPage - 1}
       previousLabel="<"
       renderOnZeroPageCount={null}
+      activeClassName={"active-page"}
     />
   );
 };

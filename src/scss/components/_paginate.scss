@@ -71,3 +71,8 @@
     cursor: pointer;
   }
 }
+
+.active-page {
+  background-color: #34b483;
+  transition: .3s ease-in-out;
+}
