@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setShopName, setCurrentPage, selectFilterShop, setSearchValue} from "../redux/slices/filterSlice";
+import {selectFilterShop, setShopName, setCurrentPage, setSearchValue} from "../redux/slices/filterSlice";
 
 const shops = ['All', 'Carrefour', 'Masterino', 'Dolphin']
 

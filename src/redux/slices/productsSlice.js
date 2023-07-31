@@ -5,7 +5,7 @@ export const fetchProducts = (
   createAsyncThunk('products/fetchProducts', async (params) => {
     const {shopBy, searchBy, sortBy, currentPage} = params
     const {data} = await axios
-      .get(`https://62f79a7bab9f1f8e890019ee.mockapi.io/products?${shopBy}&page=${currentPage}&${sortBy}&limit=8&search=${searchBy}&order=asc`)
+      .get(`https://62f79a7bab9f1f8e890019ee.mockapi.io/products?${shopBy}&page=${currentPage}&${sortBy}&limit=8&${searchBy}&order=asc`)
 
     return data
   }))

@@ -46,7 +46,7 @@ const Home = () => {
 
   const getProducts = async () => {
 
-    const searchBy = searchValue ? `${searchValue}` : ''
+    const searchBy = searchValue ? `search=${searchValue}` : ''
     const shopBy = (shop === 'All' || !shop) ? '' : `shop=${shop}`
     const sortBy = `sortBy=${sortType}`
 
@@ -90,7 +90,7 @@ const Home = () => {
           searchValue
         })
       )
-      //isSearch.current = true
+      isSearch.current = true
     }
   }, [])
 
@@ -107,7 +107,6 @@ const Home = () => {
       })
 
       navigate(`?${queryString}`)
-      console.log(queryString)
     }
     isMounted.current = true
   }, [searchValue, currentPage, shop, sortType])
@@ -139,8 +138,6 @@ const Home = () => {
               : products
         }
       </div>
-      {/*<Pagination currentPage={currentPage} onChangePage={onChangePage} countPages={countPages}/>*/}
-
       <Pagination
         currentPage={currentPage}
         onChangePage={onChangePage}

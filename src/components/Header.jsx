@@ -10,6 +10,7 @@ import {
   selectCartProductsCount,
   selectCartTotalPrice
 } from "../redux/slices/cartSlice";
+import {selectFilterShop} from "../redux/slices/filterSlice";
 
 
 const Header = () => {
@@ -21,6 +22,7 @@ const Header = () => {
   const cartProducts = useSelector(selectCartProducts)
   const totalCartCount = useSelector(selectCartProductsCount)
   const totalCartPrice = useSelector(selectCartTotalPrice)
+  const shopTitle = useSelector(selectFilterShop)
 
   const isMounted = React.useRef(false)
 
@@ -50,7 +52,7 @@ const Header = () => {
         </Link>
 
         {
-          location.pathname !== '/cart' ? <Search/> : ''
+          (location.pathname !== '/cart' && shopTitle === 'All') ? <Search/> : ''
         }
 
         <div className="header__cart">
